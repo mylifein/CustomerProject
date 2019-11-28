@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cusapi:war">
+    <output-path>$PROJECT_DIR$/commonparent/cus-api/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cusapi</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="cus-api.war">
+      <element id="artifact" artifact-name="cusapi:war exploded" />
+    </root>
+  </artifact>
+</component>

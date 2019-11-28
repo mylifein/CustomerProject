@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cusmanager:war">
+    <output-path>$PROJECT_DIR$/commonparent/cus-manager/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cusmanager</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="cus-manager.war">
+      <element id="artifact" artifact-name="cusmanager:war exploded" />
+    </root>
+  </artifact>
+</component>

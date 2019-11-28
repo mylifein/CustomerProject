@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cusapi" />
+        <module name="cusmanager" />
+        <module name="cusservice" />
+        <module name="cusdao" />
+        <module name="cusmodel" />
+        <module name="cusutil" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="commonparent" target="1.5" />
+      <module name="cusapi" target="1.7" />
+      <module name="cusdao" target="1.7" />
+      <module name="cusmanager" target="1.7" />
+      <module name="cusmodel" target="1.7" />
+      <module name="cusservice" target="1.7" />
+      <module name="cusutil" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/commonparent/commonparent.iml" filepath="$PROJECT_DIR$/commonparent/commonparent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonparent/cus-api/cusapi.iml" filepath="$PROJECT_DIR$/commonparent/cus-api/cusapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonparent/cus-dao/cusdao.iml" filepath="$PROJECT_DIR$/commonparent/cus-dao/cusdao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonparent/cus-manager/cusmanager.iml" filepath="$PROJECT_DIR$/commonparent/cus-manager/cusmanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonparent/cus-model/cusmodel.iml" filepath="$PROJECT_DIR$/commonparent/cus-model/cusmodel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonparent/cus-service/cusservice.iml" filepath="$PROJECT_DIR$/commonparent/cus-service/cusservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonparent/cus-util/cusutil.iml" filepath="$PROJECT_DIR$/commonparent/cus-util/cusutil.iml" />
+    </modules>
+  </component>
+</project>
