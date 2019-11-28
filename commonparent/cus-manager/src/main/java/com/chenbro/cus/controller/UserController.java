@@ -24,6 +24,12 @@ public class UserController {
     public String login(){
         User user = userService.findById("1");
         System.out.println("璐璐真漂亮");
+
         return  null;
+    }
+
+    @RequestMapping("home")
+    public String homePage(){
+        return "home";
     }
 }
