@@ -24,28 +24,26 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
     }
 
     @Override
-    public User findById(String id) {
-        return userMapper.findById(id);
+    public User selectByUsername(String username) {
+        return userMapper.selectByUsername(username);
     }
+
 
     @Override
     public User findByUUID(String uuid) {
-        return userMapper.findByUUID(uuid);
+        return userMapper.selectByPrimaryKey(uuid);
     }
 
-    @Override
-    public void deleteById(Integer id) {
-        userMapper.deleteById(id);
-    }
+
 
     @Override
     public void deleteByUUID(String uuid) {
-        userMapper.deleteByUUID(uuid);
+        userMapper.deleteByPrimaryKey(uuid);
     }
 
     @Override
     public void update(User user) {
-        userMapper.update(user);
+        userMapper.updateByPrimaryKey(user);
     }
 
     @Override

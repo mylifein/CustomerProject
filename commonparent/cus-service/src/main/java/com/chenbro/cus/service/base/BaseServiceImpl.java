@@ -16,20 +16,13 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T>{
     @Autowired
     protected UserMapper userMapper;
 
-    @Override
-    public T findById(String id) {
-        return null;
-    }
+
 
     @Override
     public T findByUUID(String uuid) {
         return null;
     }
 
-    @Override
-    public void deleteById(Integer id) {
-
-    }
 
     @Override
     public void deleteByUUID(String uuid) {

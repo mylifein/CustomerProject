@@ -9,11 +9,9 @@ package com.chenbro.cus.service.base;
  **/
 public interface IBaseService<T > {
 
-    public T findById(String id);
 
     public T findByUUID(String uuid);
 
-    public void deleteById(Integer id);
 
     public void deleteByUUID(String uuid);
 

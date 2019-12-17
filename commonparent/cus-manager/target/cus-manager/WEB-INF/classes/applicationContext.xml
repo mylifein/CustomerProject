@@ -26,6 +26,77 @@
         <property name="minPoolSize" value="2"/>
     </bean>
 
+    <!-- Shiro 的核心组件  -->
+    <!-- 1.配置securityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!--   配置缓存配置  -->
+        <property name="cacheManager" ref="cacheManger"/>
+        <property name="realm" ref="jdbcRealm"/>
+
+    </bean>
+    <!--  2 配置 缓存框架 ehcache  -->
+    <bean id="cacheManger" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
+
+    <!--  3.自定义realm  -->
+    <bean id="jdbcRealm" class="com.chenbro.cus.web.shiro.ShiroRealm">
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <property name="hashAlgorithmName" value="MD5"></property>       <!-- hash Algorithm 加密的名称    hash Iterations 加密的次数 -->
+                <property name="hashIterations" value="1902"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 4.shiro 与spring 整合 -->
+    <!-- Spring 自动管理Shiro的对象(生命周期管理) -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- 为Spring配置的bean 启用Shiro Annotations,仅在lifecycleBeanProcessor运行后运行 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <!-- 前提条件：bean id 必须要和 web.xml shiroFilter一致 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/user/login.jsp"/>    <!-- 未认证的登陆界面 -->
+        <property name="successUrl" value="/main.jsp"/>     <!--  认证成功后可以访问的主页面 -->
+        <property name="unauthorizedUrl" value="/unauth.jsp"/>  <!-- 无权限页面 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- map key=value 请求的URL资源=拦截器
+                    anon 匿名拦截器 (未认证的情况下允许访问）
+                    authc 认证拦截器 (认证成功的情况下允许访问)
+                    logout 认证过滤器
+                    Ant 风格
+                    ？ 匹配任何单字符
+                    /*  匹配0或者任意数量的字符
+                    /** 匹配0或者更多的目录
+                    优先顺序：先声明 为优先
+
+                -->
+                /WEB-INF/login.jsp = anon
+                / = anon
+                /login.jsp = anon
+                /user/login.do = anon
+                /list.jsp = anon
+                /css/** = anon
+                /images/** = anon
+                /js/** = anon
+                /logout/exit = logout
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+
+    <!-- 2.配置 缓存框架 ehcache -->
+
+
     <!-- 配置sessionFactory-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -49,7 +120,7 @@
 
     <!-- 配置事务-->
     <!-- 配置事务管理器-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 </beans>
